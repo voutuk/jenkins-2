@@ -6,13 +6,13 @@ pipeline {
                 sh 'terraform init'
             }
         }
-        
+
         stage('Terraform Apply') {
             steps {
-                withCredentials([usernamePassword(credentialsId: '0e5fbbc9-14c0-40c0-bd2a-adc3ae6d214a', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                withCredentials([usernamePassword(credentialsId: '2ee71291-a2e1-41b6-86db-ecde653e40b4', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                     script {
                         sh "terraform apply -var='aws_acces=$USERNAME' -var='aws_secret=$PASSWORD' -auto-approve"
-                        
+
                     }
                 }
             }
